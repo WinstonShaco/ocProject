@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ocRest:war">
+    <output-path>$PROJECT_DIR$/ocRest/target</output-path>
+    <root id="archive" name="ocRest.war">
+      <element id="artifact" artifact-name="ocRest:war exploded" />
+    </root>
+  </artifact>
+</component>

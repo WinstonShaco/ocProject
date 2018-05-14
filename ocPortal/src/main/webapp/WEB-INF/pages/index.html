@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>在线网校学习平台</title>
+
+    <#include "./common/res.html">
+</head>
+
+<body>
+<#include "./common/header.html">
+
+<div class="f-main">
+    <!-- 轮播 分类-start -->
+    <div class="clearfix">
+        <div class=main-category>
+
+            <!-- 轮播区-start -->
+            <div class="main-bg">
+                <#if carouselList?? && carouselList?size gt 0>
+                <#list carouselList as item>
+                <a href="${s.base}${item.url!''}">
+                    <div class="main-bg-item"  style='background-image: url("${item.picture!}"); '></div>
+                </a>
+                </#list>
+                </#if>
+            </div>
+
+            <div class="f-nav-box">
+                <div class="bg-nav">
+                    <#if carouselList?? && carouselList?size gt 0>
+                    <#list carouselList as item>
+                    <!-- 判断是否是第一个 -->
+                    <#if item_index == 0>
+                    <a class="cur"></a>
+                    <#else>
+                    <a></a>
+                    </#if>
+                    </#list>
+                    </#if>
+                </div>
+            </div>
+<!-- 轮播区-end -->
+
+<!-- 分类区-start -->
+<div class="main-category-menu">
+    <#if classifys??>
+    <#list classifys as item>
+    <#if item_index lt 6>
+    <div class="category" c-id="classify_${item.id!}">
+        <a href="${s.base}/course/list.html?c=${item.code!}"><div class="group">${item.name!} </div></a>
+    </div>
+</#if>
+</#list>
+</#if>
+</div>
+
+<!-- 二级分类 -->
+<#if classifys??>
+<#list classifys as item>
+<#if item_index lt 6>
+<div class="main-category-submenu-content"  id="classify_${item.id!}" >
+    <div class="clearfix" >
+        <div class="submenu-title clearfix">分类目录</div>
+        <#if item.subClassifyList??>
+        <#list item.subClassifyList as subItem>
+        <a class="submenu-item" href="${s.base}/course/list.html?c=${subItem.code!}">${subItem.name!}</a>
+        <#if subItem_index lt (item.subClassifyList?size - 1)>
+        <a class="submenu-item">/</a>
+    </#if>
+</#list>
+</#if>
+</div>
+
+<div class="clearfix" >
+    <div class="submenu-title" style="margin-top: 30px;">课程推荐</div>
+    <div>
+        <#if item.recomdCourseList?? && item.recomdCourseList?size gt 0 >
+        <#list item.recomdCourseList as item>
+        <a href="${s.base}/course/learn/${item.id}.html" class="mt-10" title="${item.name!}"><li class="ellipsis oc-color-hover">➤ ${item.name!}</li></a>
+    </#list>
+</#if>
+</div>
+</div>
+</div>
+</#if>
+</#list>
+</#if>
+<!-- 分类区-end -->
+</div>
+</div>
+<!-- 轮播 分类-end -->
+
+<!-- 实战推荐-start -->
+<div class="types-block clearfix">
+    <h3 class="types-title">实战推荐</h3>
+    <div class="types-content">
+
+        <a href="">
+            <div class="course-card-container">
+                <div class="course-card-top green-bg">
+                    <span>测试</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">Android自动化测试实战 工具 框架 脚本</h3>
+                    <p title="找Android自动化测试工作必学的主流工具、框架和自动化脚本">找Android自动化测试工作必学的主流工具、框架和自动化脚本</p>
+                    <div class="course-card-bottom">
+                        <div class="course-card-info">178人在学</div>
+                        <div class="course-card-price">￥179.00</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="">
+            <div class="course-card-container">
+                <div class="course-card-top pink-bg">
+                    <span>WebApp</span>
+                </div>
+                <div class="course-card-content">
+                    <h3 class="course-card-name">AngularJS仿拉勾网WebApp 开发移动端单页应用</h3>
+                    <p title="基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用">基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">344人在学</div>
+
+                        <div class="course-card-price">￥99.00</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="">
+            <div class="course-card-container">
+                <div class="course-card-top brown-bg">
+                    <span>Django</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">强力django杀手级xadmin 打造上线标准的在线教育平台</h3>
+                    <p title="全面掌握django框架,轻松应对python web开发工作">全面掌握django框架,轻松应对python web开发工作</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">488人在学</div>
+                        <div class="course-card-price">￥369.00</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="">
+            <div class="course-card-container">
+                <div class="course-card-top purple-bg">
+                    <span>Python</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">Python高级编程技巧实战</h3>
+                    <p title="精选50个python训练任务，提升实战技能与高效编程技巧">精选50个python训练任务，提升实战技能与高效编程技巧</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">813人在学</div>
+                        <div class="course-card-price">￥168.00</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="">
+            <div class="course-card-container" style="margin-right: 0px;">
+                <div class="course-card-top green-bg">
+                    <span>PHP</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">前端后台ThinkPHP开发整站</h3>
+                    <p title="用PHP+MySQL+Ajax开完新闻资讯整站，实现“小全栈”的梦想">用PHP+MySQL+Ajax开完新闻资讯整站，实现“小全栈”的梦想</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">2324人在学</div>
+                        <div class="course-card-price">￥128.00</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>
+<!-- 实战推荐-end -->
+
+<!-- 免费好课-start -->
+<div class="types-block clearfix">
+    <h3 class="types-title">免费好课</h3>
+    <div class="types-content">
+        <a href="">
+            <div class="course-card-container">
+                <div class="course-card-top green-bg">
+                    <span>测试</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">Android自动化测试实战 工具 框架 脚本</h3>
+                    <p title="找Android自动化测试工作必学的主流工具、框架和自动化脚本">找Android自动化测试工作必学的主流工具、框架和自动化脚本</p>
+                    <div class="course-card-bottom">
+                        <div class="course-card-info">初级<span>·</span>178人在学</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="">
+            <div class="course-card-container">
+                <div class="course-card-top pink-bg">
+                    <span>WebApp</span>
+                </div>
+                <div class="course-card-content">
+                    <h3 class="course-card-name">AngularJS仿拉勾网WebApp 开发移动端单页应用</h3>
+                    <p title="基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用">基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">初级<span>·</span>3444人在学</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <div class="course-card-container">
+            <div class="course-card-top brown-bg">
+                <span>Django</span>
+            </div>
+
+            <div class="course-card-content">
+                <h3 class="course-card-name">强力django杀手级xadmin 打造上线标准的在线教育平台</h3>
+                <p title="全面掌握django框架,轻松应对python web开发工作">全面掌握django框架,轻松应对python web开发工作</p>
+                <div class="clearfix course-card-bottom">
+                    <div class="course-card-info">初级<span>·</span>4888人在学</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card-container">
+            <div class="course-card-top purple-bg">
+                <span>Python</span>
+            </div>
+
+            <div class="course-card-content">
+                <h3 class="course-card-name">Python高级编程技巧实战</h3>
+                <p title="精选50个python训练任务，提升实战技能与高效编程技巧">精选50个python训练任务，提升实战技能与高效编程技巧</p>
+                <div class="clearfix course-card-bottom">
+                    <div class="course-card-info">高级<span>·</span>81333人在学</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card-container" style="margin-right: 0px;">
+            <div class="course-card-top green-bg">
+                <span>PHP</span>
+            </div>
+
+            <div class="course-card-content">
+                <h3 class="course-card-name">前端后台ThinkPHP开发整站</h3>
+                <p title="用PHP+MySQL+Ajax开完新闻资讯整站，实现“小全栈”的梦想">用PHP+MySQL+Ajax开完新闻资讯整站，实现“小全栈”的梦想</p>
+                <div class="clearfix course-card-bottom">
+                    <div class="course-card-info">中级<span>·</span>6133人在学</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- 免费好课-end -->
+
+<!-- java课程-start -->
+<div class="types-block clearfix">
+    <h3 class="types-title">Java开发工程师</h3>
+    <div class="types-content-left "
+         style="background-image: url(http://img.mukewang.com/58ac18fd00012a4202240348.jpg);">
+        <div class="course-card-container-fix">
+            <div class="course-card-content">
+                <h3 class="course-card-name">Java职业路径</h3>
+                <p class="color-fff" title="带你研究Java技术框架">带你研究Java技术框架，系统地学习java技术</p>
+                <div class="course-card-bottom" style="margin-top: 50px;">
+                    <div class="course-card-info color-fff">了解详情 →</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="types-content-right ">
+        <div class="types-content-banner ">
+            <a target="_blank" href="http://coding.imooc.com/class/81.html">
+                <div class="types-content-banner-block green-bg"  style="margin-right:20px;" >
+                    Spring框架实战讲解！
+                </div>
+            </a>
+            <a target="_blank" href="http://coding.imooc.com/class/76.html">
+                <div class="types-content-banner-block gray-bg"  >
+                    MyBatis框架实战讲解！
+                </div>
+            </a>
+        </div>
+
+        <div class="clearfix">
+            <a href="">
+                <div class="course-card-container">
+                    <div class="course-card-top green-bg">
+                        <span>测试</span>
+                    </div>
+
+                    <div class="course-card-content">
+                        <h3 class="course-card-name">Android自动化测试实战 工具 框架 脚本</h3>
+                        <p title="找Android自动化测试工作必学的主流工具、框架和自动化脚本">找Android自动化测试工作必学的主流工具、框架和自动化脚本</p>
+                        <div class="course-card-bottom">
+                            <div class="course-card-info">
+                                初级<span>·</span>178人在学
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="">
+                <div class="course-card-container">
+                    <div class="course-card-top pink-bg">
+                        <span>WebApp</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-name">AngularJS仿拉勾网WebApp 开发移动端单页应用</h3>
+                        <p title="基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用">基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用</p>
+                        <div class="clearfix course-card-bottom">
+                            <div class="course-card-info">
+                                初级<span>·</span>3444人在学
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="course-card-container">
+                <div class="course-card-top brown-bg">
+                    <span>Django</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">强力django杀手级xadmin 打造上线标准的在线教育平台</h3>
+                    <p title="全面掌握django框架,轻松应对python web开发工作">全面掌握django框架,轻松应对python
+                        web开发工作</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">
+                            初级<span>·</span>4888人在学
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card-container" style="margin-right: 0px;">
+                <div class="course-card-top purple-bg">
+                    <span>Python</span>
+                </div>
+
+                <div class="course-card-content">
+                    <h3 class="course-card-name">Python高级编程技巧实战</h3>
+                    <p title="精选50个python训练任务，提升实战技能与高效编程技巧">精选50个python训练任务，提升实战技能与高效编程技巧</p>
+                    <div class="clearfix course-card-bottom">
+                        <div class="course-card-info">
+                            高级<span>·</span>81333人在学
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- java课程-end -->
+
+<!--名校讲师-start -->
+<div class="types-block clearfix">
+    <h3 class="types-title">名校讲师</h3>
+    <a href="">
+        <div class="lecturer-card-container">
+            <div class="lecturer-item">
+                <img class="lecturer-uimg" src="${s.base}/res/i/header.jpg">
+                <span class="lecturer-name">王阳明</span>
+                <span class="lecturer-title">中华大学</span>
+                <span class="lecturer-p" >中华大学高级讲师，擅长写代码</span>
+            </div>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="lecturer-card-container">
+            <div class="lecturer-item">
+                <img class="lecturer-uimg" src="${s.base}/res/i/header.jpg">
+                <span class="lecturer-name">王阳明</span>
+                <span class="lecturer-title">中华大学</span>
+                <span class="lecturer-p" >中华大学高级讲师，擅长写代码</span>
+            </div>
+        </div>
+    </a>
+
+    <div class="lecturer-card-container">
+        <div class="lecturer-item">
+            <img class="lecturer-uimg" src="${s.base}/res/i/header.jpg">
+            <span class="lecturer-name">王阳明</span>
+            <span class="lecturer-title">中华大学</span>
+            <span class="lecturer-p" >中华大学高级讲师，擅长写代码</span>
+        </div>
+    </div>
+
+    <div class="lecturer-card-container"  >
+        <div class="lecturer-item">
+            <img class="lecturer-uimg" src="${s.base}/res/i/header.jpg">
+            <span class="lecturer-name">王阳明</span>
+            <span class="lecturer-title">中华大学</span>
+            <span class="lecturer-p" >中华大学高级讲师，擅长写代码</span>
+        </div>
+    </div>
+
+    <div class="lecturer-card-container" style="margin-right: 0px;">
+        <div class="lecturer-item">
+            <img class="lecturer-uimg" src="${s.base}/res/i/header.jpg">
+            <span class="lecturer-name">王阳明</span>
+            <span class="lecturer-title">中华大学</span>
+            <span class="lecturer-p" >中华大学高级讲师，擅长写代码</span>
+        </div>
+    </div>
+
+</div>
+<!--名校讲师-end -->
+</div>
+
+<#include "./common/footer.html">
+</body>
+
+<script type="text/javascript">
+
+    $(function(){
+        //轮播效果 -start
+    <#if carouselList?? && carouselList?size gt 0>
+        var size = Number('${carouselList?size}');
+    <#else>
+        var size = 0;
+    </#if>
+
+        var index = 0;
+        var timer = 4000;
+        $('.bg-nav a').click(function(){
+            index = $('.bg-nav a').index($(this));
+            rollBg(index);
+        });
+        $('.index-roll-item').click(function(){
+            index = $('.index-roll-item').index($(this));
+            rollBg(index);
+        });
+        var rollBg = function(i){
+            $('.main-bg-item').fadeOut(1000);
+            $($('.main-bg-item')[i]).fadeIn(1000);
+            $('.bg-nav a').removeClass('cur');
+            $($('.bg-nav a')[i]).addClass('cur');
+            $('.index-roll-item').removeClass('cur');
+            $($('.index-roll-item')[i]).addClass('cur');
+        }
+        setInterval(function(){
+            index += 1;
+            index = index%size;
+            rollBg(index);
+        }, timer);
+        //轮播效果 -end
+
+        //课程分类展示-start
+        $(".category").popover({
+            trigger:'manual',
+            placement : 'right',
+            html: 'true',
+            content : '',
+            animation: false
+        }).on("mouseenter", function () {
+            var cid = $(this).attr('c-id');
+            $('#' + cid).show();
+            $('#' + cid).hover(function(){
+                $('#' + cid).show();
+            },function(){
+                $('#' + cid).hide();
+            });
+        }).on("mouseleave", function () {
+            var cid = $(this).attr('c-id');
+            $('#' + cid).hide();
+        });
+        //课程分类展示-end
+    });
+</script>
+
+</html>
