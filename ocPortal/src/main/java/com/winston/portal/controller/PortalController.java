@@ -1,5 +1,7 @@
 package com.winston.portal.controller;
 
+import com.winston.core.auth.domain.AuthUser;
+import com.winston.core.auth.service.IAuthUserService;
 import com.winston.core.consts.CourseEnum;
 import com.winston.core.consts.domain.ConstsSiteCarousel;
 import com.winston.core.consts.service.IConstsSiteCarouselService;
@@ -36,6 +38,9 @@ public class PortalController {
     @Autowired
     private ICourseService icourseService;
 
+    @Autowired
+    private IAuthUserService iAuthUserService;
+
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView("index");
@@ -71,6 +76,10 @@ public class PortalController {
         queryEntity.descSortField("studyCount");//按照studyCount降序排列
         List<Course> javaCourseList = this.icourseService.queryList(queryEntity);
         mv.addObject("javaCourseList", javaCourseList);
+
+        //加载讲师
+        List<AuthUser> recomdTeacherList = iAuthUserService.queryRecomd();
+        mv.addObject("recomdTeacherList", recomdTeacherList);
 
         return mv;
     }
