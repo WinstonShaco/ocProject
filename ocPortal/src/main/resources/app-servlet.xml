@@ -22,7 +22,7 @@
     <mvc:resources mapping="/static/**"  location="/static/"  cache-period="3600"/>
     <!-- <mvc:resources mapping="/images/**"  location="/WEB-INF/images/"  cache-period="3600"/> -->
 
-   <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+   <bean id="freemarkerConfig" class="com.winston.common.web.shiro.ShiroFreeMarkerConfigurer">
         <property name="templateLoaderPath" value=""/>
         <property name="freemarkerSettings">
             <props>
