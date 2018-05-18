@@ -20,6 +20,11 @@ public class SessionContext {
 //		return getAuthUser().getUserId();
 	}
 
+	public static String getUsername(){
+		return "yuxinze";
+//		return getAuthUser().getUserId();
+	}
+
 	// 获取当前登录用户
 	public static SessionUser getAuthUser() {
 		return (SessionUser) SecurityUtils.getSubject().getPrincipal();
