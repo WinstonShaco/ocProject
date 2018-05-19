@@ -21,13 +21,18 @@ public class SessionContext {
 	}
 
 	public static String getUsername(){
-		return "yuxinze";
-//		return getAuthUser().getUserId();
+		if(null != getAuthUser()){
+			return getAuthUser().getUsername();
+		}
+		return null;
 	}
 
 	// 获取当前登录用户
 	public static SessionUser getAuthUser() {
-		return (SessionUser) SecurityUtils.getSubject().getPrincipal();
+		if(null != SecurityUtils.getSubject().getPrincipal()){
+			return (SessionUser) SecurityUtils.getSubject().getPrincipal();
+		}
+		return null;
 	}
 
 	// 获取验证码
@@ -52,6 +57,13 @@ public class SessionContext {
 	// 删除属性
 	public static void removeAttribute(HttpServletRequest request, String key) {
 		request.getSession().removeAttribute(key);
+	}
+	public static boolean isLogin(){
+		Subject currentUser = SecurityUtils.getSubject();
+		if(null != currentUser && null != currentUser.getPrincipal()){
+			return true;
+		}
+		return false;
 	}
 
 	//shiro logout

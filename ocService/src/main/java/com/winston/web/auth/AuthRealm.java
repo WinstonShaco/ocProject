@@ -1,13 +1,11 @@
 package com.winston.web.auth;
 
-import com.winston.common.storage.QiniuStorage;
-import com.winston.common.storage.ThumbModel;
-import com.winston.common.web.SessionContext;
-import com.winston.common.web.auth.SessionUser;
-import com.winston.core.auth.domain.AuthUser;
-import com.winston.core.auth.service.IAuthUserService;
 import org.apache.commons.lang.StringUtils;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -15,6 +13,12 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.winston.common.storage.QiniuStorage;
+import com.winston.common.storage.ThumbModel;
+import com.winston.common.web.SessionContext;
+import com.winston.common.web.auth.SessionUser;
+import com.winston.core.auth.domain.AuthUser;
+import com.winston.core.auth.service.IAuthUserService;
 /**
  * shiro实现用户登陆；
  * 各个模块表不一样，各自处理；

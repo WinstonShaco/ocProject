@@ -40,22 +40,24 @@
 						中级
 						<#else>
 						高级
-					</#if>
-				</#if>
-			</div>
-		</div>
-		<div class="static-item" style="border:none;">
-			<div class="meta">课程时长</div>
-			<div class="meta-value">${(course.time)!}</div>
-		</div>
-		<!-- 推荐 -->
-		<a id="collectionSpan" onclick="doCollect(${(course.id)!})" href="javascript:void(0)" class="following" style="float: right;margin-top:5px;" >
-		</a>
-	</div>
+						</#if>
+						</#if>
+					</div>
+				</div>
+				<div class="static-item" style="border:none;">
+					<div class="meta">课程时长</div>
+					<div class="meta-value">${(course.time)!}</div>
+				</div>
+				<!-- 推荐 -->
 
-	<div class="course-brief">
-		${(course.brief)!}
-	</div>
+				<a id="collectionSpan" onclick="doCollect(${(course.id)!})" href="javascript:void(0)" class="following" style="float: right;margin-top:5px;" >
+				</a>
+
+				</div>
+
+				<div class="course-brief">
+					${(course.brief)!}
+				</div>
 
 	<div class="course-menu">
 		<a  href="javascript:void(0)" >
@@ -262,6 +264,8 @@
             }
         });
     }
+
+
 </script>
 
 </body>
